@@ -1,0 +1,56 @@
+{
+    "Users":[
+        {
+            "mentor": [
+                {
+                    "Name" : "Dr. Amar Jindal",
+                    "email" : "amarjindal123@mentor.upes.ac.in",
+                    "password" : "FOrgotten"
+                },
+                {
+                    "Name" : "Dr. Amit Verma",
+                    "email" : "amitverma23@mentor.upes.ac.in",
+                    "password" : "FOrgotten123"
+                },
+                {
+                    "Name" : "Dr. Shelly Garg",
+                    "email" : "shellyg449@mentor.upes.ac.in",
+                    "password" : "FOrgotten34"
+                }
+            ]
+        },
+        {
+            "students" :[
+                {
+                    "Name" : "Rajat bisht",
+                    "email" : "500095841@stu.upes.ac.in",
+                    "password" : "FOrgotten"
+                },
+                {
+                    "Name" : "Utkarsh kaushik",
+                    "email" : "500094581@stu.upes.ac.in",
+                    "password" : "FOrgotten"
+                },
+                {
+                    "Name" : "Arnim taliyan",
+                    "email" : "500095056@stu.upes.ac.in",
+                    "password" : "FOrgotten"
+                },
+                {
+                    "Name" : "Saksham Adhikari",
+                    "email" : "500095839@stu.upes.ac.in",
+                    "password" : "FOrgotten"
+                }
+            ]
+        },
+        {
+            "admin":[
+                {
+                    "Name" : "Admin",
+                    "email" : "admin123@admin.upes.ac.in",
+                    "password" : "admin123"
+                }
+            ]
+        }
+    ]
+}
