@@ -1,5 +1,7 @@
 const express = require('express');
 const {readFileSync} = require('fs');
+const app = express();
+
 
 let loadEmails = () => {
   let users = JSON.parse(readFileSync('data.json'));
@@ -9,7 +11,8 @@ let loadEmails = () => {
     const adminEmails = user.admin ? user.admin.map(a => a.email) : [];
     return mentorEmails.concat(studentsEmails, adminEmails);
   });
-  console.log(emails);
+  
+  // console.log(emails);
   return emails;
 }
 
@@ -27,10 +30,14 @@ let loadPasswords= () => {
 
 loadEmails();
 
-const app = express();
+const Emails = loadEmails();
 
 app.get("/", (req, res) => {
-  res.send("This is the backend")
+  const email = req.query.email;
+  if(Emails.includes(email)){
+    res.send("This is the backend");
+  }
+  res.send("This is the failed if backend");
 })
 
 app.get("/email", (req, res) =>{
