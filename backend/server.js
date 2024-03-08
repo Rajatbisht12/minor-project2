@@ -1,7 +1,10 @@
 const express = require('express');
 const {readFileSync} = require('fs');
+const cors = require('cors');
 const app = express();
-
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
 
 // let loadEmails = () => {
 //   let users = JSON.parse(readFileSync('data.json'));
@@ -45,17 +48,33 @@ const loadadminEmail = () =>{
 }
 
 
-let loadPasswords= () => {
+let loadPasswordsM= () => {
   let users = JSON.parse(readFileSync('data.json'));
-  const password = users.Users.flatMap(user => {
+  const passwordMentor = users.Users.flatMap(user => {
     const mentorPasswords = user.mentor ? user.mentor.map(m => m.password) : [];
-    const studentsPasswords = user.students ? user.students.map(s => s.password) : [];
-    const adminPasswords = user.admin ? user.admin.map(a => a.password) : [];
-    return mentorPasswords.concat(studentsPasswords, adminPasswords);
+    return mentorPasswords;
   });
-  console.log(password);
-  return password;
+  return passwordMentor;
 }
+
+let loadPasswordsS= () => {
+  let users = JSON.parse(readFileSync('data.json'));
+  const passwordStudent = users.Users.flatMap(user => {
+    const studentsPasswords = user.students ? user.students.map(s => s.password) : [];
+    return studentsPasswords;
+  });
+  return passwordStudent;
+}
+
+let loadPasswordsA= () => {
+  let users = JSON.parse(readFileSync('data.json'));
+  const passwordAdmin = users.Users.flatMap(user => {
+    const adminPasswords = user.admin ? user.admin.map(a => a.password) : [];
+    return adminPasswords;
+  });
+  return passwordAdmin;
+}
+
 
 
 
@@ -66,6 +85,14 @@ let loadPasswords= () => {
 const EmailsM = loadmentorEmail();
 const EmailsS = loadstudentEmail();
 const EmailsA = loadadminEmail();
+
+
+
+
+// loadPassword();
+const passwordM = loadPasswordsM();
+const passwordS = loadPasswordsS();
+const passwordA = loadPasswordsA();
 
 // app.get("/", (req, res) => {
 //   const email = req.query.email;
@@ -95,12 +122,13 @@ const EmailsA = loadadminEmail();
 
 app.get("/", (req, res) => {
   const email = req.query.email;
+  const password = req.query.password;
 
-  if (EmailsM.includes(email)) {
+  if (EmailsM.includes(email) && passwordM.includes(password)) {
     res.redirect("/mentor");
-  } else if (EmailsS.includes(email)) {
+  } else if (EmailsS.includes(email) && passwordS.includes(password)) {
     res.redirect("/student");
-  } else if (EmailsA.includes(email)) {
+  } else if (EmailsA.includes(email) && passwordA.includes(password)) {
     res.redirect("/admin");
   } else {
     res.send("This is the failed if backend");
@@ -109,17 +137,17 @@ app.get("/", (req, res) => {
 
 app.get("/mentor", (req, res) => {
   res.setHeader('Content-Type', 'text/html');
-  res.send("This is Mentor mail");
+  res.send("Mentor");
 });
 
 app.get("/student", (req, res) => {
   res.setHeader('Content-Type', 'text/html');
-  res.send("This is Student mail");
+  res.send("Student");
 });
 
 app.get("/admin", (req, res) => {
   res.setHeader('Content-Type', 'text/html');
-  res.send("This is Admin mail");
+  res.send("Admin");
 });
 
 
