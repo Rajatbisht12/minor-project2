@@ -6,19 +6,19 @@ app.use(cors({
   origin: 'http://localhost:3000'
 }));
 
-let loadEmails = () => {
-  let users = JSON.parse(readFileSync('data.json'));
-  const emails = users.Users.flatMap(user => {
-    const mentorEmails = user.mentor ? user.mentor.map(m => m.email) : [];
-    // const studentsEmails = user.students ? user.students.map(s => s.email) : [];
-    // const adminEmails = user.admin ? user.admin.map(a => a.email) : [];
-    // return mentorEmails.concat(studentsEmails, adminEmails);
-    return mentorEmails;
-  });
+// let loadEmails = () => {
+//   let users = JSON.parse(readFileSync('data.json'));
+//   const emails = users.Users.flatMap(user => {
+//     const mentorEmails = user.mentor ? user.mentor.map(m => m.email) : [];
+//     // const studentsEmails = user.students ? user.students.map(s => s.email) : [];
+//     // const adminEmails = user.admin ? user.admin.map(a => a.email) : [];
+//     // return mentorEmails.concat(studentsEmails, adminEmails);
+//     return mentorEmails;
+//   });
   
-  console.log(emails);
-  return emails;
-}
+//   console.log(emails);
+//   return emails;
+// }
 
 const loadmentorEmail = () =>{
   let users = JSON.parse(readFileSync('data.json'));
@@ -80,6 +80,19 @@ let loadPasswordsA= () => {
 
 
 
+// loadEmails();
+
+const EmailsM = loadmentorEmail();
+const EmailsS = loadstudentEmail();
+const EmailsA = loadadminEmail();
+
+
+
+
+// loadPassword();
+const passwordM = loadPasswordsM();
+const passwordS = loadPasswordsS();
+const passwordA = loadPasswordsA();
 
 // app.get("/", (req, res) => {
 //   const email = req.query.email;
@@ -105,115 +118,16 @@ let loadPasswordsA= () => {
 //     res.send("This is the failed if backend");
 //   }
 // })
-// const loadstudentDescrition = () =>{
-//   let users = JSON.parse(readFileSync('data.json'));
-//   const emailDesc = users.Users.flatMap(user => {
-//     const studentsdesc = user.students ? user.students.map(s => s.description) : [];
-//     return studentsdesc;
-//     // console.log(studentsdesc);
-//   });
-//   return emailDesc;
-// }
-
-
-app.get("/", (req, res) => {
-  const email = req.query.email;
-  const password = req.query.password;
-
-  if (EmailsM.includes(email) && passwordM.includes(password)) {
-    res.redirect("/mentor");
-  } else if (EmailsS.includes(email) && passwordS.includes(password)) {
-    res.redirect("/student");
-  } else if (EmailsA.includes(email) && passwordA.includes(password)) {
-    res.redirect("/admin");
-  } else {
-    res.send("This is the failed if backend");
-  }
-});
-
-// const loadmentorEmail = () => {
-//   let users = JSON.parse(readFileSync('data.json'));
-//   const emailM = users.Users.flatMap(user => {
-//     const mentorEmails = user.mentors ? user.mentors.map(m => m.email) : [];
-//     return mentorEmails;
-//   });
-//   return emailM;
-// }
-
-// const loadstudentEmail = () => {
-//   let users = JSON.parse(readFileSync('data.json'));
-//   const emailS = users.Users.flatMap(user => {
-//     const studentEmails = user.students ? user.students.map(s => s.email) : [];
-//     return studentEmails;
-//   });
-//   return emailS;
-// }
-
-// const loadadminEmail = () => {
-//   let users = JSON.parse(readFileSync('data.json'));
-//   const emailA = users.Users.flatMap(user => {
-//     const adminEmails = user.admin ? user.admin.map(a => a.email) : [];
-//     return adminEmails;
-//   });
-//   return emailA;
-// }
-
-// const loadPasswordsM = () => {
-//   let users = JSON.parse(readFileSync('data.json'));
-//   const passwordMentor = users.Users.flatMap(user => {
-//     const mentorPasswords = user.mentors ? user.mentors.map(m => m.password) : [];
-//     return mentorPasswords;
-//   });
-//   return passwordMentor;
-// }
-
-// const loadPasswordsS = () => {
-//   let users = JSON.parse(readFileSync('data.json'));
-//   const passwordStudent = users.Users.flatMap(user => {
-//     const studentPasswords = user.students ? user.students.map(s => s.password) : [];
-//     return studentPasswords;
-//   });
-//   return passwordStudent;
-// }
-
-// const loadPasswordsA = () => {
-//   let users = JSON.parse(readFileSync('data.json'));
-//   const passwordAdmin = users.Users.flatMap(user => {
-//     const adminPasswords = user.admin ? user.admin.map(a => a.password) : [];
-//     return adminPasswords;
-//   });
-//   return passwordAdmin;
-// }
-
-const loadStudentDescription = (email) => {
+const loadstudentDescrition = () =>{
   let users = JSON.parse(readFileSync('data.json'));
-  const studentDesc = users.Users.flatMap(user => {
-    if (user.students) {
-      const student = user.students.find(s => s.email === email);
-      if (student) {
-        return student.description;
-      }
-    }
-    return [];
+  const emailDesc = users.Users.flatMap(user => {
+    const studentsdesc = user.students ? user.students.map(s => s.description) : [];
+    //return studentsdesc;
+    console.log(studentsdesc);
   });
-  return studentDesc;
+  return emailDesc;
 }
-
-// // loadEmails();
-
-const EmailsM = loadmentorEmail();
-const EmailsS = loadstudentEmail();
-const EmailsA = loadadminEmail();
-
-
-
-
-// // loadPassword();
-const passwordM = loadPasswordsM();
-const passwordS = loadPasswordsS();
-const passwordA = loadPasswordsA();
-
-// loadstudentDescrition();
+loadstudentDescrition();
 
 app.get("/", (req, res) => {
   const email = req.query.email;
@@ -237,12 +151,8 @@ app.get("/mentor", (req, res) => {
 });
 
 app.get("/student", (req, res) => {
-  const email = req.query.email;
-  const desc = loadStudentDescription(email);
   res.setHeader('Content-Type', 'text/html');
-  res.send(desc);
-  
-  res.send(desc);
+  res.send("Student");
 });
 
 app.get("/admin", (req, res) => {

@@ -5,17 +5,23 @@
                 {
                     "Name" : "Dr. Amar Jindal",
                     "email" : "amarjindal123@mentor.upes.ac.in",
-                    "password" : "FOrgotten"
+                    "password" : "FOrgotten",
+                    "img" : "...",
+                    "description" : "loremdfadf "
                 },
                 {
                     "Name" : "Dr. Amit Verma",
                     "email" : "amitverma23@mentor.upes.ac.in",
-                    "password" : "FOrgotten123"
+                    "password" : "FOrgotten123",
+                    "img" : "...",
+                    "description" : "loremdfadf "
                 },
                 {
                     "Name" : "Dr. Shelly Garg",
                     "email" : "shellyg449@mentor.upes.ac.in",
-                    "password" : "FOrgotten34"
+                    "password" : "FOrgotten34",
+                    "img" : "...",
+                    "description" : "loremdfadf "
                 }
             ]
         },
@@ -24,22 +30,30 @@
                 {
                     "Name" : "Rajat bisht",
                     "email" : "500095841@stu.upes.ac.in",
-                    "password" : "FOrgotten"
+                    "password" : "FOrgotten",
+                    "img" : "...",
+                    "description" : "Hii my name is rajat"
                 },
                 {
                     "Name" : "Utkarsh kaushik",
                     "email" : "500094581@stu.upes.ac.in",
-                    "password" : "FOrgotten"
+                    "password" : "FOrgotten",
+                    "img" : "...",
+                    "description" : "loremdfadf "
                 },
                 {
                     "Name" : "Arnim taliyan",
                     "email" : "500095056@stu.upes.ac.in",
-                    "password" : "FOrgotten"
+                    "password" : "FOrgotten",
+                    "img" : "...",
+                    "description" : "loremdfadf "
                 },
                 {
                     "Name" : "Saksham Adhikari",
                     "email" : "500095839@stu.upes.ac.in",
-                    "password" : "FOrgotten"
+                    "password" : "FOrgotten",
+                    "img" : "...",
+                    "description" : "loremdfadf "
                 }
             ]
         },
@@ -48,7 +62,9 @@
                 {
                     "Name" : "Admin",
                     "email" : "admin123@admin.upes.ac.in",
-                    "password" : "admin123"
+                    "password" : "admin123",
+                    "img" : "...",
+                    "description" : "loremdfadf "
                 }
             ]
         }
