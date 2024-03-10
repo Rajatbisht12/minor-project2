@@ -199,6 +199,76 @@ const loadStudentDescription = (email) => {
   return studentDesc;
 }
 
+const loadStudentImage = (email) => {
+  let users = JSON.parse(readFileSync('data.json'));
+  const studentImg = users.Users.flatMap(user => {
+    if (user.students) {
+      const student = user.students.find(s => s.email === email);
+      if (student) {
+        return student.img;
+      }
+    }
+    return [];
+  });
+  return studentImg;
+}
+
+
+const loadMentorDescription = (email) => {
+  let users = JSON.parse(readFileSync('data.json'));
+  const mentorDesc = users.Users.flatMap(user => {
+    if (user.mentor) {
+      const mentor = user.mentor.find(s => s.email === email);
+      if (mentor) {
+        return mentor.description;
+      }
+    }
+    return [];
+  });
+  return mentorDesc;
+}
+
+const loadMentorImage = (email) => {
+  let users = JSON.parse(readFileSync('data.json'));
+  const mentorImage = users.Users.flatMap(user => {
+    if (user.mentor) {
+      const mentor = user.mentor.find(s => s.email === email);
+      if (mentor) {
+        return mentor.img;
+      }
+    }
+    return [];
+  });
+  return mentorImage;
+}
+
+const loadAdminDescription = (email) => {
+  let users = JSON.parse(readFileSync('data.json'));
+  const adminDesc = users.Users.flatMap(user => {
+    if (user.admin) {
+      const admin = user.admin.find(s => s.email === email);
+      if (admin) {
+        return admin.description;
+      }
+    }
+    return [];
+  });
+  return adminDesc;
+}
+
+const loadAdminImage = (email) => {
+  let users = JSON.parse(readFileSync('data.json'));
+  const adminImg = users.Users.flatMap(user => {
+    if (user.admin) {
+      const admin = user.admin.find(s => s.email === email);
+      if (admin) {
+        return admin.img;
+      }
+    }
+    return [];
+  });
+  return adminImg;
+}
 // // loadEmails();
 
 const EmailsM = loadmentorEmail();
@@ -231,23 +301,32 @@ app.get("/", (req, res) => {
 });
 
 app.get("/mentor", (req, res) => {
+  const email = req.query.email;
+  const desc = loadMentorDescription(email);
+  const image = loadMentorImage(email);
   res.setHeader('Content-Type', 'text/html');
-  res.send("Mentor");
-  
+  res.send(desc);
+  res.send(image);
 });
 
 app.get("/student", (req, res) => {
   const email = req.query.email;
   const desc = loadStudentDescription(email);
+  const image = loadStudentImage(email);
   res.setHeader('Content-Type', 'text/html');
   res.send(desc);
+  res.send(image);
   
-  res.send(desc);
+  
 });
 
 app.get("/admin", (req, res) => {
+  const email = req.query.email;
+  const desc = loadAdminDescription(email);
+  const image = loadAdminImage(email);
   res.setHeader('Content-Type', 'text/html');
-  res.send("Admin");
+  res.send(desc);
+  res.send(image);
 });
 
 
