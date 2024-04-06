@@ -14,12 +14,12 @@ connectToDb().then(() => {
           return results;
         } catch (error) {
           console.error("Error fetching data:", error);
-          throw error; // Re-throw the error for proper handling in the route handler
+          throw error;
         }
       }
       
       app.get('/api/data', async (req, res) => {
-        // ... (rest of the route handler)
+        
       });
       
   

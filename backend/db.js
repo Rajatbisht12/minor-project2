@@ -1,22 +1,24 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient } = require("mongodb");
 
-const uri = "mongodb://localhost:27017/";
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
+// Replace the uri string with your connection string.
+const uri = "mongodb://localhost:27017";
 
-async function connectToDb() {
+const client = new MongoClient(uri);
+
+async function run() {
   try {
     await client.connect();
-    console.log("Connected to MongoDB!");
-  } catch (error) {
-    console.error("Error connecting to MongoDB:", error);
-    process.exit(1); 
+    const database = client.db('mydb');
+    const datas = database.collection('data').find({}).toArray();
+
+    // Query for a movie that has the title 'Back to the Future'
+    const query = user => user.Users.some(mentor => mentor.email === "amarjindal123@mentor.upes.ac.in");
+    const email = await datas.findOne(query);
+
+    console.log(email);
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
   }
 }
-
-module.exports = { client, connectToDb };
+run().catch(console.dir);
