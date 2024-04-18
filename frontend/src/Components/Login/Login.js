@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-// import Home from '../Home/Home';
-// import HomeA from '../Home/HomeA';
-// import HomeM from '../Home/HomeM';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Avatar,
   Box,
@@ -21,29 +17,25 @@ import {
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import axios from 'axios';
 
-const defaultTheme = createTheme();
+import { emailContext } from '../Context/Context';
+import Home from '../Home/Home';
+import HomeA from '../Home/HomeA';
+import HomeM from '../Home/HomeM';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [link, setLink] = useState(null);
   const navigate = useNavigate();
+
+  const defaultTheme = createTheme();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // const data = { email, password };
 
     try {
       const response = await axios.get(`http://localhost:5050/?email=${email}&&password=${password}`);
       console.log(response);
       console.log(response.data.includes('Student'));
-      // if(response.data.includes('Student')){
-      //   setLink(<Link to="../Home/Home"></Link>);
-      // }else if(response.data.includes('Admin')){
-      //   setLink(<Link to = "../Home/HomeA"></Link>);
-      // }else if(response.data.includes('Mentor')){
-      //   setLink(<Link to = "../Home/HomeM"></Link>);
-      // }
 
       if (response.data.includes('Student')) {
           navigate('/Home');
@@ -58,6 +50,8 @@ function Login() {
   };
 
   return (
+    <>
+    <emailContext.Provider value={email}>
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         
@@ -128,6 +122,11 @@ function Login() {
         </Box>
       </Container>
     </ThemeProvider>
+    <Home/>
+    <HomeA/>
+    <HomeM/>      
+    </emailContext.Provider>
+    </>
   );
 }
 

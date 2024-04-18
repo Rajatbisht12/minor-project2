@@ -269,14 +269,26 @@ const loadAdminImage = (email) => {
   });
   return adminImg;
 }
-// // loadEmails();
+
+const loadmentorlist = () => {
+  let users = JSON.parse(readFileSync('data.json'));
+  const Mlist = users.Users.flatMap(user => {
+    const mentorList = user.mentor ? user.mentor.map(m => m.Name) : [];
+    return mentorList;
+  });
+  return Mlist;
+}
+
+
+
+// loadEmails();
 
 const EmailsM = loadmentorEmail();
 const EmailsS = loadstudentEmail();
 const EmailsA = loadadminEmail();
 
-
-
+const facultyList = loadmentorlist();
+console.log(facultyList); 
 
 // // loadPassword();
 const passwordM = loadPasswordsM();
@@ -312,13 +324,18 @@ app.get("/mentor", (req, res) => {
 app.get("/student", (req, res) => {
   const email = req.query.email;
   const desc = loadStudentDescription(email);
-  const image = loadStudentImage(email);
   res.setHeader('Content-Type', 'text/html');
   res.send(desc);
-  res.send(image);
-  
-  
 });
+
+
+app.get("/studentI", (req, res) => {
+  const email = req.query.email;
+  const image = loadStudentImage(email);
+  res.setHeader('Content-Type', 'text/html');
+  res.send(image);
+});
+
 
 app.get("/admin", (req, res) => {
   const email = req.query.email;
@@ -330,6 +347,11 @@ app.get("/admin", (req, res) => {
 });
 
 
+
+app.get("/facultyList", (req, res) => {
+  const list = facultyList;
+  res.send(list);
+})
 
 // app.get("/admin", (req, res) => {
 //   const email = req.query.email;
