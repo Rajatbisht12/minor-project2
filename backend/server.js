@@ -116,20 +116,20 @@ let loadPasswordsA= () => {
 // }
 
 
-app.get("/", (req, res) => {
-  const email = req.query.email;
-  const password = req.query.password;
+// app.get("/", (req, res) => {
+//   const email = req.query.email;
+//   const password = req.query.password;
 
-  if (EmailsM.includes(email) && passwordM.includes(password)) {
-    res.redirect("/mentor");
-  } else if (EmailsS.includes(email) && passwordS.includes(password)) {
-    res.redirect("/student");
-  } else if (EmailsA.includes(email) && passwordA.includes(password)) {
-    res.redirect("/admin");
-  } else {
-    res.send("This is the failed if backend");
-  }
-});
+//   if (EmailsM.includes(email) && passwordM.includes(password)) {
+//     res.redirect("/mentor");
+//   } else if (EmailsS.includes(email) && passwordS.includes(password)) {
+//     res.redirect("/student");
+//   } else if (EmailsA.includes(email) && passwordA.includes(password)) {
+//     res.redirect("/admin");
+//   } else {
+//     res.send("This is the failed if backend");
+//   }
+// });
 
 // const loadmentorEmail = () => {
 //   let users = JSON.parse(readFileSync('data.json'));
@@ -302,8 +302,10 @@ app.get("/", (req, res) => {
   const password = req.query.password;
 
   if (EmailsM.includes(email) && passwordM.includes(password)) {
+    res.send("mentor");
     res.redirect("/mentor");
   } else if (EmailsS.includes(email) && passwordS.includes(password)) {
+    res.send("Student")
     res.redirect("/student");
   } else if (EmailsA.includes(email) && passwordA.includes(password)) {
     res.redirect("/admin");
@@ -321,11 +323,17 @@ app.get("/mentor", (req, res) => {
   res.send(image);
 });
 
-app.get("/student", (req, res) => {
+app.get("/student", async (req, res) => {
   const email = req.query.email;
-  const desc = loadStudentDescription(email);
-  res.setHeader('Content-Type', 'text/html');
-  res.send(desc);
+
+  try {
+    const desc = await loadStudentDescription(email);
+    res.setHeader('Content-Type', 'text/html');
+    res.send(desc);
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).send('An error occurred');
+  }
 });
 
 
