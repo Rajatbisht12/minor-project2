@@ -1,0 +1,96 @@
+/* label{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-top: 25px;
+}
+
+
+div input{
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-left: 830px;
+    border: 2px solid black;
+}
+
+textarea{
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-left: 1000px;
+    border: 2px solid black;
+} */
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f8f8;
+  }
+  
+  /* Form Styles */
+  form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 500px;
+  }
+  
+  /* Label Styles */
+  label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Input Styles */
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  textarea:focus {
+    outline: none;
+    border-color: #ff6f61;
+  }
+  
+  /* Textarea Styles */
+  textarea {
+    height: 150px;
+    resize: vertical;
+  }
+  
+  /* Button Styles */
+  button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #ff4d3b;
+  }
+

@@ -85,6 +85,7 @@
 
 import React, { useState } from 'react'
 import Example from '../Navbar/Navbar'
+import Announcement from '../Sections/Announcement';
 
 function Home(props) {
 
@@ -93,6 +94,7 @@ function Home(props) {
   return (
     <>
         <Example email={email}/>
+        <Announcement/>
     </>
   )
 }

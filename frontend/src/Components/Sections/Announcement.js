@@ -1,34 +1,43 @@
-import {Component} from "react";
-import React from "react";
-import {MDBCard, MDBCardBody, MDBCardHeader} from "mdbreact";
+import './Announcement.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-export default class Announcements extends Component {
-    render() {
-        return <>
-            <MDBCard className="mb-4">
-                <MDBCardHeader>Student End-Sem Examinantion</MDBCardHeader>
-                <MDBCardBody>
-                    <ul>
-                        <li style={{padding: 10}}>End-Sem Examinantion for all the Year are starting from <span
-                            style={{color: "#FF0000", fontWeight: "bolder"}}><u> 28th April</u></span>. until the end of
-                            15th May.
-                        </li>
-                        <li style={{padding: 10}}>Students are <u>strictly</u> advised to Fill there feedback form and pay all there 
-                        dues to get their Admint cards.
-                        </li>
-                        <li style={{padding: 10}}>The Attendance lesser than <b>75%</b> will not be accepted.
-                        </li>
-                    </ul>
-                </MDBCardBody>
-            </MDBCard>
-            <MDBCard className="mb-4">
-                <MDBCardHeader>Minor presentation dates are Out for Minor II and Major II</MDBCardHeader>
-                <MDBCardBody>
-                    <p>
-                        The presentation dates for Minor && MAjor are from <u style={{color: "#FF0000", fontWeight: "bolder"}}>24 Apr to 30 Apr</u>.
-                    </p>
-                </MDBCardBody>
-            </MDBCard>
-        </>
-    }
+export default function Announcement() {
+    const [projects, setProjects] = useState([]);
+
+    useEffect(() => {
+      fetchProjects();
+    }, []);
+  
+    const fetchProjects = async () => {
+      try {
+        const response = await axios.get('http://localhost:5050/projects');
+        setProjects(response.data);
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+      }
+    };
+  return (
+    <>
+    <div>
+      <h1>Announcements</h1>
+      <div className="container">
+        {projects.length === 0 ? (
+          <div className="message">No announcements yet.</div>
+        ) : (
+          <ul>
+            {projects.map((project, index) => (
+              <li key={index}>
+                <h2>{project.projectName}</h2>
+                <p>Role Needed: {project.roleNeeded}</p>
+                <p>Number of Students: {project.numStudents}</p>
+                <p>Project Details: {project.projectDetail}</p>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+    </>
+  )
 }

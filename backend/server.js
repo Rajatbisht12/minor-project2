@@ -1,10 +1,14 @@
 const express = require('express');
-const { readFileSync } = require('fs');
+const { readFileSync, writeFileSync } = require('fs');
+const fs = require('fs')
 const cors = require('cors');
 const app = express();
+const bodyParser = require('body-parser');
 app.use(cors({
   origin: 'http://localhost:3000'
 }));
+
+app.use(bodyParser.json());
 
 // const allowedOrigins = ['exp://192.168.1.11:8081', 'http://localhost:8081'];
 // app.use(cors({
@@ -12,6 +16,9 @@ app.use(cors({
 // }));
 
 const userData = JSON.parse(readFileSync('data.json'));
+// const writeData = JSON.parse(writeFileSync('data.json'));
+
+
 
 const loadMentorEmails = () => {
   return userData.Users.flatMap(user => (user.mentor ?? []).map(m => m.email));
@@ -43,7 +50,14 @@ const loadUserDescriptionAndImage = (email, userType) => {
   });
 
   if(users.length > 0) {
-    const user = users[0];
+    const user = users[0];try {
+      const data = fs.readFileSync('projects.json', 'utf8');
+      projects = JSON.parse(data);
+    } catch (err) {
+      if (err.code !== 'ENOENT') {
+        console.error('Error reading projects.json:', err);
+      }
+    }
     const userRole = user[userType].find(userRole => userRole.email === email);
     return {
       description: userRole.description,
@@ -176,6 +190,44 @@ app.get('/facultyList', (req, res) => {
   } else {
     res.status(404).send("Mentor not found"); // Sending a 404 status with an appropriate message
   }
+});
+
+app.get('/projects', (req, res) => {
+  fs.readFile('projects.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading projects.json:', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+      return;
+    }
+
+    const projects = JSON.parse(data);
+    res.json(projects);
+  });
+});
+
+
+app.post('/projects', (req, res) => {
+  const { projectName, roleNeeded, numStudents, projectDetail } = req.body;
+  const project = { projectName, roleNeeded, numStudents, projectDetail };
+
+  // Read the existing projects from the file
+  let projects = [];
+  try {
+    const data = readFileSync('projects.json', 'utf8');
+    projects = JSON.parse(data);
+  } catch (err) {
+    if (err.code !== 'ENOENT') {
+      console.error('Error reading projects.json:', err);
+    }
+  }
+
+  // Add the new project to the existing array
+  projects.push(project);
+
+  // Write the updated projects array to the file
+  writeFileSync('projects.json', JSON.stringify(projects, null, 2));
+
+  res.status(201).json(project);
 });
 
 const studentList = loadStudentList();

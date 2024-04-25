@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { Fragment, useEffect, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
@@ -21,14 +23,14 @@ function classNames(...classes) {
 
 
 
-export default function Example(props) {
+export default function ExampleM(props) {
     const [email, setEmail] = useState('');
     const [img, setImage] = useState();
 
     const location = useLocation();
 
 const navigation = [
-  { name: 'Dashboard', to: '/Home', current: location.pathname === '/Home' },
+  { name: 'Dashboard', to: '/HomeM', current: location.pathname === '/HomeM' },
   { name: 'Projects', to: '/Projects', current: location.pathname === '/Projects' },
   { name: 'Calendar', to: '/calendar', current: location.pathname === '/calendar' },
 ];
