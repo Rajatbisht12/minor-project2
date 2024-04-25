@@ -24,6 +24,7 @@ function classNames(...classes) {
 export default function Example(props) {
     const [email, setEmail] = useState('');
     const [img, setImage] = useState();
+    const [records, setRecords] = useState([]);
 
     const location = useLocation();
 
@@ -33,23 +34,51 @@ const navigation = [
   { name: 'Calendar', to: '/calendar', current: location.pathname === '/calendar' },
 ];
 
+// useEffect(() => {
+//   setEmail(props.email);
+//   const fetchData = async () => {
+//     if (Array.isArray(Records)) {
+//       const record = Records.find(record => record.email === props.email);
+//       if (record) {
+//         setImage(record.img);
+//         localStorage.setItem('userImage', record.img);
+//       }
+//     } else {
+//       console.error('Records is not an array');
+//     }
+//   };
+
+//   const storedImage = localStorage.getItem('userImage');
+//   if (storedImage) {
+//     setImage(storedImage);
+//   }
+
+//   fetchData();
+// }, [props.email, Records, location]);
+  
 useEffect(() => {
   setEmail(props.email);
-  const fetchData = async () => {
-    if (Array.isArray(Records)) {
-      const record = Records.find(record => record.email === props.email);
-      if (record) {
-        setImage(record.img);
-      }
-    } else {
-      console.error('Records is not an array');
-    }
-  };
 
-  fetchData();
-}, [props.email, Records, location]);
-  
-    
+  // Retrieve records from localStorage
+  const storedRecords = localStorage.getItem('records');
+  if (storedRecords) {
+    setRecords(JSON.parse(storedRecords));
+  } else {
+    setRecords(Records);
+    localStorage.setItem('records', JSON.stringify(Records));
+  }
+}, [props.email]);
+
+useEffect(() => {
+  const record = records.find((record) => record.email === email);
+  if (record) {
+    setImage(record.img);
+  }
+}, [email, records]);
+
+
+
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -110,11 +139,11 @@ useEffect(() => {
                     <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src={img}
-                        alt=""
-                      />
+                        <img
+                          className="h-8 w-8 rounded-full"
+                          src={img}
+                          alt=""
+                        />
                     </Menu.Button>
                   </div>
                   <Transition

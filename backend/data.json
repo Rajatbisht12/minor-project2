@@ -7,21 +7,24 @@
                     "email" : "amarjindal123@mentor.upes.ac.in",
                     "password" : "123456",
                     "img": "assets/Amar_Jindal.jpeg",
-                    "description" : "loremdfadf "
+                    "description" : "loremdfadf ",
+                    "department" : "School of Computer Science"
                 },
                 {
                     "Name" : "Dr. Amit Verma",
                     "email" : "amitverma23@mentor.upes.ac.in",
                     "password" : "FOrgotten123",
                     "img" : "...",
-                    "description" : "loremdfadf "
+                    "description" : "loremdfadf ",
+                    "department" :"School of Health Science"
                 },
                 {
                     "Name" : "Dr. Shelly Garg",
                     "email" : "shellyg449@mentor.upes.ac.in",
                     "password" : "FOrgotten34",
                     "img" : "...",
-                    "description" : "loremdfadf "
+                    "description" : "loremdfadf ",
+                    "department" :"School of Business"
                 }
             ]
         },
