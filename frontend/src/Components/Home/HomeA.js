@@ -1,10 +1,10 @@
 import axios from 'axios';
-import React, { useContext } from 'react'
-import { emailContext } from '../Context/Context';
+import React from 'react'
 
 
-function HomeA (){
- const email = useContext(emailContext);
+
+function HomeA ({userEmail}){
+ const email = {userEmail};
   const loadDesc = async () =>{
     const desc = await axios.get(`http://localhost:5050/student/?email=${email}`);
     return desc;

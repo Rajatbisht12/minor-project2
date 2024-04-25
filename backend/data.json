@@ -5,8 +5,8 @@
                 {
                     "Name" : "Dr. Amar Jindal",
                     "email" : "amarjindal123@mentor.upes.ac.in",
-                    "password" : "FOrgotten",
-                    "img" : "...",
+                    "password" : "123456",
+                    "img": "assets/Amar_Jindal.jpeg",
                     "description" : "loremdfadf "
                 },
                 {
@@ -31,15 +31,15 @@
                     "Name" : "Rajat bisht",
                     "email" : "500095841@stu.upes.ac.in",
                     "password" : "FOrgotten",
-                    "img" : "hello",
+                    "img" : "assets/Amar_Jindal.jpeg",
                     "description" : "Hii my name is rajat"
                 },
                 {
                     "Name" : "Utkarsh kaushik",
                     "email" : "500094581@stu.upes.ac.in",
-                    "password" : "FOrgotten",
+                    "password" : "123",
                     "img" : "...",
-                    "description" : "loremdfadf "
+                    "description" : "Utkarsk lodu"
                 },
                 {
                     "Name" : "Arnim taliyan",

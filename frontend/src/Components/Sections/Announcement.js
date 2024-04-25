@@ -6,34 +6,27 @@ export default class Announcements extends Component {
     render() {
         return <>
             <MDBCard className="mb-4">
-                <MDBCardHeader>Extended Campus Access Hours</MDBCardHeader>
+                <MDBCardHeader>Student End-Sem Examinantion</MDBCardHeader>
                 <MDBCardBody>
                     <ul>
-                        <li style={{padding: 10}}>Campus access hours have been extended from <span
-                            style={{color: "#FF0000"}}><u> 7.30 p.m. to 10.00 p.m</u></span>. until the end of
-                            examination time
-                            period.
+                        <li style={{padding: 10}}>End-Sem Examinantion for all the Year are starting from <span
+                            style={{color: "#FF0000", fontWeight: "bolder"}}><u> 28th April</u></span>. until the end of
+                            15th May.
                         </li>
-                        <li style={{padding: 10}}>Students are <u>strictly</u> advised to remain at the study areas and
-                            common areas during the above said time and
-                            to avoid accessing other areas of the campus premises.
+                        <li style={{padding: 10}}>Students are <u>strictly</u> advised to Fill there feedback form and pay all there 
+                        dues to get their Admint cards.
                         </li>
-                        <li style={{padding: 10}}>The above measure is taken in view of security of the students and
-                            staff members.
+                        <li style={{padding: 10}}>The Attendance lesser than <b>75%</b> will not be accepted.
                         </li>
                     </ul>
                 </MDBCardBody>
             </MDBCard>
             <MDBCard className="mb-4">
-                <MDBCardHeader>SLIIT WALK</MDBCardHeader>
-                {/* <MDBCardImage className="img-fluid" src={require("../../../images/sliit-walk.JPG")} waves/> */}
-            </MDBCard>
-            <MDBCard className="mb-4">
-                <MDBCardHeader>Rotaract Club of SLIIT for receiving the award for “Club Efforts in Rotary’s Six Areas of
-                    Focus”</MDBCardHeader>
+                <MDBCardHeader>Minor presentation dates are Out for Minor II and Major II</MDBCardHeader>
                 <MDBCardBody>
-                    <p>Congratulations, Rotaract Club of SLIIT for receiving the award for “Club Efforts in Rotary’s Six
-                        Areas of Focus” at the Roar South Asia Awards.</p>
+                    <p>
+                        The presentation dates for Minor && MAjor are from <u style={{color: "#FF0000", fontWeight: "bolder"}}>24 Apr to 30 Apr</u>.
+                    </p>
                 </MDBCardBody>
             </MDBCard>
         </>

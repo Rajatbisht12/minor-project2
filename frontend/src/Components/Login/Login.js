@@ -17,12 +17,10 @@ import {
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import axios from 'axios';
 
-import { emailContext } from '../Context/Context';
-import Home from '../Home/Home';
-import HomeA from '../Home/HomeA';
-import HomeM from '../Home/HomeM';
 
-function Login() {
+
+
+function Login({setUserEmail}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -31,7 +29,7 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setUserEmail(email);
     try {
       const response = await axios.get(`http://localhost:5050/?email=${email}&&password=${password}`);
       console.log(response);
@@ -51,7 +49,7 @@ function Login() {
 
   return (
     <>
-    <emailContext.Provider value={email}>
+    
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         
@@ -122,10 +120,6 @@ function Login() {
         </Box>
       </Container>
     </ThemeProvider>
-    <Home/>
-    <HomeA/>
-    <HomeM/>      
-    </emailContext.Provider>
     </>
   );
 }
