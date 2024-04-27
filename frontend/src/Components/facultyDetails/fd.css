@@ -1,70 +1,55 @@
-/* General Styles */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Hero Section Styles */
-  .hero-section {
-    background-color: #f5f5f5;
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  .hero-section h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: #333;
-  }
-  
-  /* Department Dropdown Styles */
-  .department-dropdown {
-    margin-bottom: 2rem;
-  }
-  
-  .department-dropdown label {
-    font-size: 1.2rem;
-    margin-right: 0.5rem;
-    color: #555;
-  }
-  
-  .department-dropdown select {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 0.25rem;
-  }
-  
-  /* Mentor List Styles */
-  .mentor-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-  }
-  
-  .mentor-card {
-    background-color: #fff;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    text-align: left;
-  }
-  
-  .mentor-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: #333;
-  }
-  
-  .mentor-card p {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    color: #666;
-  }
-  
-  .mentor-card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 0.25rem;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.department-box {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.department-box h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.mentor-card {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.mentor-card h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.mentor-card p {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.mentor-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}

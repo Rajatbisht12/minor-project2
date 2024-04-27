@@ -4,7 +4,6 @@ import './fd.css';
 import Records from '../../image.json';
 
 const FacultyDetails = () => {
-  const [selectedDepartment, setSelectedDepartment] = useState('');
   const [mentors, setMentors] = useState([]);
   const [img, setImage] = useState('');
 
@@ -20,10 +19,6 @@ const FacultyDetails = () => {
     };
     fetchMentors();
   }, []);
-
-  const handleDepartmentChange = (event) => {
-    setSelectedDepartment(event.target.value);
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,28 +39,30 @@ const FacultyDetails = () => {
     fetchData();
   }, [mentors]);
 
-  const filteredMentors = mentors.filter((mentor) => mentor.department === selectedDepartment || selectedDepartment === '');
+  const departmentGroups = mentors.reduce((groups, mentor) => {
+    const department = mentor.department;
+    if (!groups[department]) {
+      groups[department] = [];
+    }
+    groups[department].push(mentor);
+    return groups;
+  }, {});
 
   return (
-    <div>
-      <div>
-        <label htmlFor="department">Select Department:</label>
-        <select id="department" value={selectedDepartment} onChange={handleDepartmentChange}>
-          <option value="">All Departments</option>
-          <option value="School of Computer Science">School of Computer Science</option>
-          <option value="School of Health Science">School of Health Science</option>
-          <option value="School of Business">School of Business</option>
-        </select>
-      </div>
-      <div>
-        {filteredMentors.map((mentor) => (
-          <div key={mentor.email}>
-            <h3>{mentor.Name}</h3>
-            <p>{mentor.description}</p>
-            <img src={img} alt={mentor.Name} />
-          </div>
-        ))}
-      </div>
+    <div className="container">
+      <h1>Faculty Details</h1>
+      {Object.keys(departmentGroups).map((department) => (
+        <div key={department} className="department-box">
+          <h2>{department}</h2>
+          {departmentGroups[department].map((mentor) => (
+            <div key={mentor.email} className="mentor-card">
+              <h3>{mentor.Name}</h3>
+              <p>{mentor.description}</p>
+              <img src={img} alt={mentor.Name} />
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   );
 };
