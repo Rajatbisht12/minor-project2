@@ -129,6 +129,16 @@ app.get("/mentor", (req, res) => {
   res.send(JSON.stringify({ description, img }));
 });
 
+app.get('/mentorDetails', (req, res) => {
+  const data = JSON.parse(fs.readFileSync('data.json', 'utf-8'));
+  const mentors = data.Users[0].mentor.map(mentor => {
+    const { password, ...rest } = mentor;
+    return rest;
+  });
+  res.json(mentors);
+});
+
+
 app.get("/student", (req, res) => {
   const email = req.query.email;
 

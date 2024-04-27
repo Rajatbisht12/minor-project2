@@ -1,75 +1,67 @@
 {
-    "Users":[
-        {
-            "mentor": [
-                {
-                    "Name" : "Dr. Amar Jindal",
-                    "email" : "amarjindal123@mentor.upes.ac.in",
-                    "password" : "123456",
-                    "img": "assets/Amar_Jindal.jpeg",
-                    "description" : "loremdfadf ",
-                    "department" : "School of Computer Science"
-                },
-                {
-                    "Name" : "Dr. Amit Verma",
-                    "email" : "amitverma23@mentor.upes.ac.in",
-                    "password" : "FOrgotten123",
-                    "img" : "...",
-                    "description" : "loremdfadf ",
-                    "department" :"School of Health Science"
-                },
-                {
-                    "Name" : "Dr. Shelly Garg",
-                    "email" : "shellyg449@mentor.upes.ac.in",
-                    "password" : "FOrgotten34",
-                    "img" : "...",
-                    "description" : "loremdfadf ",
-                    "department" :"School of Business"
-                }
-            ]
-        },
-        {
-            "students" :[
-                {
-                    "Name" : "Rajat bisht",
-                    "email" : "500095841@stu.upes.ac.in",
-                    "password" : "FOrgotten",
-                    "img" : "assets/Amar_Jindal.jpeg",
-                    "description" : "Hii my name is rajat"
-                },
-                {
-                    "Name" : "Utkarsh kaushik",
-                    "email" : "500094581@stu.upes.ac.in",
-                    "password" : "123",
-                    "img" : "...",
-                    "description" : "Utkarsk lodu"
-                },
-                {
-                    "Name" : "Arnim taliyan",
-                    "email" : "500095056@stu.upes.ac.in",
-                    "password" : "FOrgotten",
-                    "img" : "...",
-                    "description" : "loremdfadf "
-                },
-                {
-                    "Name" : "Saksham Adhikari",
-                    "email" : "500095839@stu.upes.ac.in",
-                    "password" : "FOrgotten",
-                    "img" : "...",
-                    "description" : "loremdfadf "
-                }
-            ]
-        },
-        {
-            "admin":[
-                {
-                    "Name" : "Admin",
-                    "email" : "admin123@admin.upes.ac.in",
-                    "password" : "admin123",
-                    "img" : "...",
-                    "description" : "loremdfadf "
-                }
-            ]
-        }
+    "Users": [
+      {
+        "mentor": [
+          {
+            "Name": "Dr. Amar Jindal",
+            "email": "amarjindal123@mentor.upes.ac.in",
+            "password": "123456",
+            "description": "loremdfadf ",
+            "department": "School of Computer Science"
+          },
+          {
+            "Name": "Dr. Amit Verma",
+            "email": "amitverma23@mentor.upes.ac.in",
+            "password": "FOrgotten123",
+            "description": "loremdfadf ",
+            "department": "School of Health Science"
+          },
+          {
+            "Name": "Dr. Shelly Garg",
+            "email": "shellyg449@mentor.upes.ac.in",
+            "password": "FOrgotten34",
+            "description": "loremdfadf ",
+            "department": "School of Business"
+          }
+        ]
+      },
+      {
+        "students": [
+          {
+            "Name": "Rajat bisht",
+            "email": "500095841@stu.upes.ac.in",
+            "password": "FOrgotten",
+            "description": "Hii my name is rajat"
+          },
+          {
+            "Name": "Utkarsh kaushik",
+            "email": "500094581@stu.upes.ac.in",
+            "password": "123",
+            "description": "Utkarsk lodu"
+          },
+          {
+            "Name": "Arnim taliyan",
+            "email": "500095056@stu.upes.ac.in",
+            "password": "FOrgotten",
+            "description": "loremdfadf "
+          },
+          {
+            "Name": "Saksham Adhikari",
+            "email": "500095839@stu.upes.ac.in",
+            "password": "FOrgotten",
+            "description": "loremdfadf "
+          }
+        ]
+      },
+      {
+        "admin": [
+          {
+            "Name": "Admin",
+            "email": "admin123@admin.upes.ac.in",
+            "password": "admin123",
+            "description": "loremdfadf "
+          }
+        ]
+      }
     ]
-}
+  }
